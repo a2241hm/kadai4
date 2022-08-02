@@ -1,0 +1,9 @@
+ilanguage: bash
+script:
+  - echo hello
+  - echo Travis CI test in .travis.yml
+  - ./kadai4_test.sh
+branches:
+ only:
+  - master
+  - develop
