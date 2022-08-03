@@ -9,14 +9,14 @@
 ## 入力チェック
 # 引数チェック
 if [ $# -ne 2 ]; then
-	echo "2つの自然数を入力してください" 1>&2 
+	echo "2つの自然数を入力してください"  
 exit 1
 fi
 
 # 自然数チェック1 数字以外の場合、終了ステータスが2以上になる 
 expr $1 + $2 > /dev/null 2>&1 
 if [ $? -ge 2 ]; then
-	echo "自然数を入力されていません" 1>&2
+	echo "自然数を入力されていません" 
 	exit 1
 fi
 
@@ -24,7 +24,7 @@ fi
 for num in $@
 do
 	if [ $num -lt 0 ]; then
-		echo "マイナスが入力されています" 1>&2
+		echo "マイナスが入力されています" 
 		exit 1
 	fi
 done
@@ -33,7 +33,7 @@ done
 for num in $@
 do
 	if [ $num -eq 0 ]; then
-		echo "0が入力されています" 1>&2
+		echo "0が入力されています" 
 		exit 1
 	fi
 done
@@ -42,16 +42,16 @@ done
 m=$1
 n=$2
 
-# 先頭のメッセージ出力
-HEADER(){
-	echo "入力された "$m" と "$n" の"
-}
+# 先頭のメッセージ出力 (テスト実行のためメッセージ出力させない）
+#HEADER(){
+#	echo "入力された "$m" と "$n" の"
+#}
 
 # ユークリッドの互除法を使った最大公約数の計算
 # m=$1 n=$2  rを余りとする
 # $mが大きい場合と小さい場合の2パターンを用意する。
 if [ $m -gt $n ]; then       # $mが大きい場合
-	HEADER                   # ヘッダー出力
+	#HEADER                   # ヘッダー出力
     r=`expr $m % $n`
     while [ $r != 0 ]
     do
@@ -59,9 +59,10 @@ if [ $m -gt $n ]; then       # $mが大きい場合
         n=$r
         r=`expr $m \% $n`
     done
-    echo "最大公約数は "$n" です。"
+    #echo "最大公約数は "$n" です。" #テスト実行のためメッセージ出力させない
+    echo $n
 else                         # $nが大きい場合
-	HEADER                   # ヘッダー出力
+	#HEADER                   # ヘッダー出力
     r=`expr $n \% $m`
     while [ $r != 0 ]
     do
@@ -69,6 +70,7 @@ else                         # $nが大きい場合
         m=$r
         r=`expr $n \% $m`
     done
-    echo "最大公約数は "$m" です。"
+    #echo "最大公約数は "$m" です。" #テスト実行のためメッセージ出力させない
+    echo $m
 fi
 

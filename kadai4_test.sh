@@ -21,7 +21,7 @@ diff ${result} ${ans} || echo "test1-1 :引数1の方が大きい場合エラー
 
 # test1-2 :引数2の方が大きい場合
 ./kadai4_main.sh 12 60 > ${result}
-echo "4" > ${ans}
+echo "12" > ${ans}
 diff ${result} ${ans} || echo "test1-2 :引数2の方が大きい場合エラー" >> ${err}
 
 # test1-3 :比較的桁数の大きい自然数の場合
@@ -47,7 +47,7 @@ diff ${result} ${ans} || echo "test2-3 :引数が3つある場合エラー" >> $
 
 # test2-4 :引数２つで文字列の場合
 ./kadai4_main.sh "aaa" "bbb" > ${result}
-echo "2つの自然数を入力してください" > ${ans}
+echo "自然数を入力されていません" > ${ans}
 diff ${result} ${ans} || echo "test2-4 :引数２つで文字列の場合エラー" >> ${err}
 
 # test2-5 :引数の1つにマイナスが存在する場合
